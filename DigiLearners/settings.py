@@ -15,6 +15,10 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import dj_database_url
 
 
 # Quick-start development settings - unsuitable for production
@@ -44,6 +48,7 @@ INSTALLED_APPS = [
     'quiz.apps.QuizConfig',
     'django_cleanup.apps.CleanupConfig',
     'froala_editor',
+    'cloudinary', 
 ]
 
 MIDDLEWARE = [
@@ -93,11 +98,16 @@ WSGI_APPLICATION = 'DigiLearners.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+DATABASE_URL = "postgresql://Ecommerce_owner:8rg4UoYflTeP@ep-cool-wind-a53mvf82.us-east-2.aws.neon.tech/DigiLearners?sslmode=require"
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
 }
 
 
@@ -166,3 +176,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+cloudinary.Config(
+      cloud_name = "dgcvv1gvw",
+      api_key = "778824486966212",
+      api_secret = "HyPgUMFsnprXOx_TgwBYFsaNt3s",
+
+   )

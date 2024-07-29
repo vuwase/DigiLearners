@@ -1,5 +1,6 @@
 from django.db import models
 from froala_editor.fields import FroalaField
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 
@@ -12,8 +13,8 @@ class Student(models.Model):
         default="Student", max_length=100, null=False, blank=True)
     course = models.ManyToManyField(
         'Course', related_name='students', blank=True)
-    photo = models.ImageField(upload_to='profile_pics', blank=True,
-                              null=False, default='profile_pics/default_student.png')
+    photo = CloudinaryField('image', folder='profile_pics', 
+                        default='profile_pics/default_student')
     department = models.ForeignKey(
         'Department', on_delete=models.CASCADE, null=False, blank=False, related_name='students')
 
@@ -38,8 +39,8 @@ class Faculty(models.Model):
         'Department', on_delete=models.CASCADE, null=False, related_name='faculty')
     role = models.CharField(
         default="Faculty", max_length=100, null=False, blank=True)
-    photo = models.ImageField(upload_to='profile_pics', blank=True,
-                              null=False, default='profile_pics/default_faculty.png')
+    photo = CloudinaryField('image', folder='profile_pics', 
+                        default='profile_pics/default_student')
 
     def delete(self, *args, **kwargs):
         if self.photo != 'profile_pics/default_faculty.png':
@@ -116,7 +117,7 @@ class Assignment(models.Model):
     description = models.TextField(null=False)
     datetime = models.DateTimeField(auto_now_add=True, null=False)
     deadline = models.DateTimeField(null=False)
-    file = models.FileField(upload_to='assignments/', null=True, blank=True)
+    file = CloudinaryField('raw', folder='submissions', null=True)
     marks = models.DecimalField(max_digits=6, decimal_places=2, null=False)
 
     class Meta:
@@ -141,7 +142,7 @@ class Submission(models.Model):
     assignment = models.ForeignKey(
         Assignment, on_delete=models.CASCADE, null=False)
     student = models.ForeignKey(Student, on_delete=models.CASCADE, null=False)
-    file = models.FileField(upload_to='submissions/', null=True,)
+    file = CloudinaryField('raw', folder='submissions', null=True)
     datetime = models.DateTimeField(auto_now_add=True, null=False)
     marks = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
@@ -189,7 +190,7 @@ class Material(models.Model):
         Course, on_delete=models.CASCADE, null=False)
     description = models.TextField(max_length=2000, null=False)
     datetime = models.DateTimeField(auto_now_add=True, null=False)
-    file = models.FileField(upload_to='materials/', null=True, blank=True)
+    file = CloudinaryField('raw', folder='materials', null=True)
 
     class Meta:
         verbose_name_plural = "Materials"

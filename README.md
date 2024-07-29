@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ## DigiLearners Management System
 
 The DigiLearners project focuses on developing an educational platform tailored to early childhood
@@ -76,7 +76,3 @@ Now the project should be running on http://127.0.0.1:8000/
 Login as admin and add some courses, teacher and students.
 
 Demo :
-=======
-# DigiLearners
-E-Learning platform
->>>>>>> 88eaaa42eab947409df5ced9ef9772019900f43b
