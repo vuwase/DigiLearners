@@ -169,7 +169,6 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
-WHITENOISE_MANIFEST_STRICT = False
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
