@@ -13,7 +13,7 @@ class Student(models.Model):
         default="Student", max_length=100, null=False, blank=True)
     course = models.ManyToManyField(
         'Course', related_name='students', blank=True)
-    photo = CloudinaryField('image', folder='profile_pics', 
+    photo = CloudinaryField('image', folder='profile_pics',
                         default='profile_pics/default_student')
     department = models.ForeignKey(
         'Department', on_delete=models.CASCADE, null=False, blank=False, related_name='students')
@@ -39,7 +39,7 @@ class Faculty(models.Model):
         'Department', on_delete=models.CASCADE, null=False, related_name='faculty')
     role = models.CharField(
         default="Faculty", max_length=100, null=False, blank=True)
-    photo = CloudinaryField('image', folder='profile_pics', 
+    photo = CloudinaryField('image', folder='profile_pics',
                         default='profile_pics/default_student')
 
     def delete(self, *args, **kwargs):
@@ -196,8 +196,8 @@ class Material(models.Model):
         verbose_name_plural = "Materials"
         ordering = ['-datetime']
 
-    def __str__(self):
-        return self.title
+    # def __str__(self):
+    #     return self.title
 
     def delete(self, *args, **kwargs):
         self.file.delete()

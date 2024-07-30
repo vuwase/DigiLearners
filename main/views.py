@@ -201,6 +201,8 @@ def error(request):
 
 
 # Display user profile(student & faculty)
+import logging
+
 def profile(request, id):
     try:
         if request.session['student_id'] == id:
@@ -208,14 +210,16 @@ def profile(request, id):
             return render(request, 'main/profile.html', {'student': student})
         else:
             return redirect('std_login')
-    except:
+    except Exception as e:
+        logging.error(f"Error in student block: {e}")
         try:
             if request.session['faculty_id'] == id:
                 faculty = Faculty.objects.get(faculty_id=id)
                 return render(request, 'main/faculty_profile.html', {'faculty': faculty})
             else:
                 return redirect('std_login')
-        except:
+        except Exception as e:
+            print(f"Error in faculty block: {e}")
             return render(request, 'error.html')
 
 

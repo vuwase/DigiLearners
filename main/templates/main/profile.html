@@ -42,7 +42,7 @@
    </div>
    <div class="d-flex flex-column align-items-center">
       <div class="my-3">
-         <img src="/media/{{student.photo}}" alt="image" class="rounded-circle" style="height: 10rem ; width:10rem">
+         <img src="{{student.photo.url}}" alt="image" class="rounded-circle" style="height: 10rem ; width:10rem">
       </div>
       <div class="my-3">
          <h5>Name : {{student.name}}</h5>
@@ -55,7 +55,7 @@
       Change Password
       </a>
       <a href="{% url 'changePhotoPrompt'  %}" class="btn btn-sm btn-primary border my-2 mx-1">
-      Change Profile Picture      
+      Change Profile Picture
       </a>
    </div>
 </div>

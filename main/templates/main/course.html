@@ -122,7 +122,7 @@
             <p>{% autoescape off %}{{ material.description }}{% endautoescape %}</p>
             <div class="d-flex justify-content-between text-break">
                {% if material.file %}
-               <a class="fw-bold" href="{{ material.file.url }}"><span style="color:#9400d3" id="materialName">File : {{material.file.name}}</span></a><br>
+               <a class="fw-bold" href="{{ material.file.url }}"><span style="color:#9400d3" id="materialName">File : {{material.file}}</span></a><br>
                {% endif %}
                <div class="text-muted">
                   {{material.post_date}}
