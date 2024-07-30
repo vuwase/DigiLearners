@@ -1,4 +1,3 @@
-
 ## DigiLearners Management System
 
 The DigiLearners project focuses on developing an educational platform tailored to early childhood
@@ -24,7 +23,7 @@ education in Rwanda.
 1. Clone the project
 
 ```bash
-git clone
+git clone https://github.com/vuwase/DigiLearners.git
 ```
 
 2. Go to the project directory

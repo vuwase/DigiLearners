@@ -102,17 +102,17 @@ WSGI_APPLICATION = 'DigiLearners.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-# DATABASE_URL = str(os.getenv('DATABASE_UR'))
-
 # DATABASES = {
-#     'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+DATABASE_URL = str(os.getenv('DATABASE_UR'))
+
+DATABASES = {
+    'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
+}
 
 
 # Password validation
@@ -165,7 +165,7 @@ USE_TZ = False
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 STATIC_URL = '/static/'
-STATIC_ROOT BASE_DIR / 'assets'
+STATIC_ROOT = BASE_DIR / 'assets'
 
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
