@@ -70,7 +70,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Now the project should be running on http://127.0.0.1:8000/
+Now the project should be running on https://digilearners.onrender.com
 
 Login as admin and add some courses, teacher and students.
 
