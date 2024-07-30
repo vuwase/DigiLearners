@@ -165,10 +165,11 @@ USE_TZ = False
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'assets'
+STATIC_ROOT = BASE_DIR / 'static'
 
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+WHITENOISE_MANIFEST_STRICT = False
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
